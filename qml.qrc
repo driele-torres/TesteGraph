@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qmlrequire.qml</file>
+        <file>qmlrequire.js</file>
+        <file>main.js</file>
+        <file>QChart-backup.js</file>
+        <file>QChartBase.js</file>
+        <file>QChartBase.qml</file>
+        <file>QChart.qml</file>
+        <file>QChartExemplos.js</file>
+    </qresource>
+</RCC>
