@@ -39,9 +39,9 @@ public:
 
 private:
     QString _fillColor       = "rgba(151,187,205,0.5)";
-    QString _strokeColor     = "";
-    QString _pointColor      = "";
-    QString _pointStrokeColor= "";
+    QString _strokeColor     = "rgba(220,220,220,1)";
+    QString _pointColor      = "rgba(220,220,220,1)";
+    QString _pointStrokeColor= "#ffffff";
 };
 Q_DECLARE_METATYPE(ColorsChart)
 typedef QList<ColorsChart*>  QColorsChartList;

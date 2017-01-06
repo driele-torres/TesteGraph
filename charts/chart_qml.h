@@ -12,10 +12,10 @@ class QMLChart : public Custom
     Q_OBJECT
     Q_ENUMS(ChartType)
     //TO DO OU APENAS UM DATASET OU VARIOS CHART TYPE OU DESENHAR DIVERSOS CHARTS DO MESMO TIPO
-    Q_PROPERTY(QCustomDatasetList   chartDatasets   READ chartDatasets          WRITE setChartDatasets         )
-    Q_PROPERTY(QVariantMap          chartProperties READ chartPropertiesVariant WRITE setChartPropertiesVariant)
-    Q_PROPERTY(QString              chartTitle      READ chartTitle             WRITE setChartTitle            )
-    Q_PROPERTY(ChartType            chartType       READ chartType              WRITE setChartType             )
+    Q_PROPERTY(QCustomDatasetList   chart_Datasets   READ chartDatasets          WRITE setChartDatasets         )
+    Q_PROPERTY(QVariantMap          chart_Properties READ chartPropertiesVariant WRITE setChartPropertiesVariant)
+    Q_PROPERTY(QString              chart_Title      READ chartTitle             WRITE setChartTitle            )
+    Q_PROPERTY(ChartType            chart_Type       READ chartType              WRITE setChartType             )
 
 public:
     explicit QMLChart(QObject *parent = 0) : Custom(parent){}

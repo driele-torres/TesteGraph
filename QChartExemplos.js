@@ -313,6 +313,11 @@ var ChartLineData = {
 //        animateScale: true
 //    }
 //}
+var testeR =
+{
+"nome": "deucerto",
+"nome composto": "deuerrado"
+}
 ListView{
             id: listView
             property int tipoUser: 1//REPRESENTANTE

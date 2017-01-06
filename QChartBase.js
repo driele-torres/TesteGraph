@@ -1,4 +1,4 @@
-var ChartType = {
+var chart_Type = {
     BAR: 1,
     DOUGHNUT: 2,
     LINE: 3,
@@ -7,8 +7,27 @@ var ChartType = {
     RADAR: 6
 };
 
-var fixedRefence = 0;
+//var testeR ="{\"nome\":\"deucerto\",\"nome composto\":\"deuerrado\"}";
+//var json = validarJSON(testeR)
+//var teste = JSON.parse(json)
+//console.log(Object.keys(teste))
+//console.log(teste)
+//console.log(teste["nome composto"])
+//function validarJSON(s){
+//    s = s.replace(/\\n/g, "\\n")
+//                   .replace(/\\'/g, "\\'")
+//                   .replace(/\\"/g, '\\"')
+//                   .replace(/\\&/g, "\\&")
+//                   .replace(/\\r/g, "\\r")
+//                   .replace(/\\t/g, "\\t")
+//                   .replace(/\\b/g, "\\b")
+//                   .replace(/\\f/g, "\\f");
+//    // remove non-printable and other non-valid JSON chars
+//    s = s.replace(/[\u0000-\u0019]+/g,"");
+//    return s;
+//}
 
+var fixedRefence = 0;
 var chartOBject;
 
 var startObject = function(data){
@@ -16,19 +35,19 @@ var startObject = function(data){
 }
 
 function getDataFromJSON(data){
-    return JSON.parse(data); //eval("("+data+")");
+    return JSON.parse(data);
 }
 
 var isRoundChart= function(){
     if (typeof(chartOBject)==='object'){
-        switch(chartOBject.chartType) {
-            case ChartType.BAR:
-            case ChartType.LINE:
-            case ChartType.RADAR:
+        switch(chartOBject.chart_Type) {
+            case chart_Type.BAR:
+            case chart_Type.LINE:
+            case chart_Type.RADAR:
                 return false;
-            case ChartType.PIE:
-            case ChartType.DOUGHNUT:
-            case ChartType.POLAR:
+            case chart_Type.PIE:
+            case chart_Type.DOUGHNUT:
+            case chart_Type.POLAR:
                 return true;
             default:
                 console.log('Chart type should be specified.');
@@ -38,13 +57,13 @@ var isRoundChart= function(){
 
 var vetoresLabels = function (){
     if(typeof(chartOBject)==='object'){
-        return chartOBject.chartDatasets[fixedRefence].dataset[fixedRefence].labels;
+        return chartOBject.chart_Datasets[fixedRefence].dataset[fixedRefence].labels;
     }else return null;
 }
 
 var vetoresColors = function (){
     if (typeof(chartOBject)==='object'){
-        var dataset = chartOBject.chartDatasets[fixedRefence].dataset[fixedRefence];
+        var dataset = chartOBject.chart_Datasets[fixedRefence].dataset[fixedRefence];
         var colors = [];
         for(var i =0; i<dataset.colors.length; i++){
             colors[i] = dataset.colors[i].fillColor;
@@ -58,33 +77,34 @@ var vetoresColors = function (){
 var Chart = function(canvas, context) {
     var chart = this;
     this.Configuracao = function(obj) {
-        console.log(typeof(obj))
-        var chartData =    obj.chartDatasets[fixedRefence].dataset;
-        var chartOptions = obj.chartProperties;
+//        console.log(typeof(obj))
+        var chartData =    obj.chart_Datasets[fixedRefence].dataset;
+        var chartOptions = obj.chart_Properties
+;
         var config;
 
-        switch(obj.chartType) {
-        case ChartType.BAR:
+        switch(obj.chart_Type) {
+        case chart_Type.BAR:
             config = (chartOptions)? mergeChartConfig(defaultsBar,chartOptions) : defaultsBar;
             return new Bar(chartData,config,context);
 
-        case ChartType.DOUGHNUT:
+        case chart_Type.DOUGHNUT:
             config = (chartOptions)? mergeChartConfig(defaultsDoughnut,chartOptions) : defaultsDoughnut;
             return new Doughnut(chartData,config,context);
 
-        case ChartType.LINE:
+        case chart_Type.LINE:
             config = (chartOptions)? mergeChartConfig(defaultsLine,chartOptions) : defaultsLine;
             return new Line(chartData,config,context);
 
-        case ChartType.PIE:
+        case chart_Type.PIE:
             config = (chartOptions)? mergeChartConfig(defaultsPie,chartOptions) : defaultsPie;
             return new Pie(chartData,config,context);
 
-        case ChartType.POLAR:
+        case chart_Type.POLAR:
             config = (chartOptions)? mergeChartConfig(defaultsPolarArea,chartOptions) : defaultsPolarArea;
             return new PolarArea(chartData,defaultsPolarArea,context);
 
-        case ChartType.RADAR:
+        case chart_Type.RADAR:
             config = (chartOptions)? mergeChartConfig(defaultsRadar,chartOptions) : defaultsRadar;
             return new Radar(chartData,defaultsRadar,context);
         default:

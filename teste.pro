@@ -75,3 +75,5 @@ HEADERS += \
     charts/chart_bar.h
 
 RESOURCES += qml.qrc
+
+DISTFILES +=
